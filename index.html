@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音声入力SOAPノート</title>
+    <meta name="description" content="音声をテキスト化し、SOAP形式に自動振り分けするアプリ">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>音声入力SOAPノート</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="controls-section">
+            <div class="buttons">
+                <button id="start-btn" class="btn btn-primary">
+                    <span class="icon">🎙️</span> 録音開始
+                </button>
+                <button id="stop-btn" class="btn btn-danger" disabled>
+                    <span class="icon">⏹️</span> 録音停止
+                </button>
+                <button id="convert-btn" class="btn btn-success" disabled>
+                    <span class="icon">✨</span> SOAP変換
+                </button>
+            </div>
+            <div id="status-indicator" class="status">待機中</div>
+        </section>
+
+        <section class="transcription-section">
+            <h2>認識されたテキスト</h2>
+            <div id="transcription-display" class="transcription-display">
+                <p class="placeholder">音声認識の結果がここに表示されます...</p>
+            </div>
+        </section>
+
+        <section class="soap-section" id="soap-results" style="display: none;">
+            <h2>SOAP 振り分け結果</h2>
+            <div class="soap-grid">
+                <div class="soap-card s-card">
+                    <div class="card-header">S (主観的情報)</div>
+                    <div class="card-content" id="soap-s-content"></div>
+                </div>
+                <div class="soap-card o-card">
+                    <div class="card-header">O (客観的情報)</div>
+                    <div class="card-content" id="soap-o-content"></div>
+                </div>
+                <div class="soap-card a-card">
+                    <div class="card-header">A (評価)</div>
+                    <div class="card-content" id="soap-a-content"></div>
+                </div>
+                <div class="soap-card p-card">
+                    <div class="card-header">P (計画)</div>
+                    <div class="card-content" id="soap-p-content"></div>
+                </div>
+                <div class="soap-card u-card">
+                    <div class="card-header">未分類</div>
+                    <div class="card-content" id="soap-u-content"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
